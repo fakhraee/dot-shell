@@ -54,6 +54,7 @@ alias ll='ls -l'
 alias l='ls -CF'
 alias la='ls -a'
 alias lla='ls -la'
+alias lsv='ls -l ~/.config/vcsh/repo.d/'
 
 alias e='vim'
 alias rr='rm -ri'
