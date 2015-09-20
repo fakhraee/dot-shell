@@ -47,6 +47,7 @@ update-repo() {
 }
 
 ## Aliases
+alias v='vcsh'
 # ls
 alias ll='ls -l'
 #alias la='ls -A'
