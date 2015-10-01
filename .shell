@@ -12,7 +12,7 @@ myip() {
 
 # number of connections each IP address has
 iptop () { 
-    netstat -ntu } | \
+    netstat -ntu | \
     awk '{print $5}' | \
     cut -d':' -f1 | \
     sort | \
@@ -69,3 +69,6 @@ alias q='exit'
 alias less='less -FX'
 alias axl='axel -a -n 8'
 alias scl='systemctl'
+
+alias imount='udisks --mount'
+alias iumount='udisks --unmount'
