@@ -69,6 +69,7 @@ alias q='exit'
 alias less='less -FX'
 alias axl='axel -a -n 8'
 alias scl='systemctl'
+alias ssh='ssh -o ServerAliveInterval=60'
 
 alias imount='udisks --mount'
 alias iumount='udisks --unmount'
