@@ -71,12 +71,10 @@ alias axl='axel -a -n 8'
 alias scl='systemctl'
 alias ssh='ssh -o ServerAliveInterval=60'
 
-alias imount='udisks --mount'
-alias iumount='udisks --unmount'
-
 alias scsv='curl -L http://git.io/unix'
 alias i3l='i3lock -i ~/.config/i3/bsod.png'
 alias ub='udisksctl mount -b'
 alias cls='$HOME/bin/ls++'
 
 alias trans='trans -t fa'
+alias wtt='curl wttr.in/mashhad'
