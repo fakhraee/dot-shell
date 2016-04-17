@@ -6,8 +6,8 @@ ir() {
 
 # my ip
 myip() { 
-    nc ifcfg.me 23 | \
-    awk 'FNR == 2 {print $4}'
+    curl http://icanhazip.com/ && echo "first try" || \
+    nc ifcfg.me 23 | awk 'FNR == 2 {print $4}'
 }
 
 # number of connections each IP address has
@@ -62,8 +62,8 @@ alias rr='rm -ri'
 alias rm='trash-put'
 alias pgg='ping google.com'
 alias p4='ping 4.2.2.4'
+alias p8='ping 8.8.8.8'
 alias diff='colordiff'
-alias ports='netstat -tulnap'
 alias dush='du -csh *|sort -h'
 alias q='exit'
 alias less='less -FX'
@@ -78,3 +78,6 @@ alias cls='$HOME/bin/ls++'
 
 alias trans='trans -t fa'
 alias wtt='curl wttr.in/mashhad'
+
+alias ports='netstat -tulnap'
+alias digs='dig +{,no}short'
