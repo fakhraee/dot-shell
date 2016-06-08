@@ -76,6 +76,10 @@ memusage() {
 }
 
 
+manperl(){ 
+    man "$1" | perl -00ne "print if /^\s*$2\b/"; 
+}
+
 
 ## Aliases
 alias v='vcsh'
