@@ -81,6 +81,12 @@ manperl(){
 }
 
 
+## switch to another ppp dev
+sw2dev() {
+    [[ -z "$1" ]] && ip r|grep default && ls /sys/class/net/|grep ppp && return
+    sudo ip r d default && sudo ip r a default dev "$1"
+}
+
 ## Aliases
 alias v='vcsh'
 # ls
