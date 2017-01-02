@@ -35,7 +35,9 @@ lower() {
 }
 
 flower() { 
-    find -type f -exec rename -v 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' {} \;
+    find -type f \
+         -exec rename \
+         -v 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' {} \;  
 }
 
 # update only $this repo
@@ -88,14 +90,15 @@ sw2dev() {
 }
 
 ## Aliases
+# vcsh
 alias v='vcsh'
+alias lsv='ls -l ~/.config/vcsh/repo.d/'
+
 # ls
+alias l='ls -1S'
 alias ll='ls -l'
-#alias la='ls -A'
-alias l='ls -CF'
 alias la='ls -a'
 alias lla='ls -la'
-alias lsv='ls -l ~/.config/vcsh/repo.d/'
 
 alias e='vim'
 alias rr='rm -ri'
@@ -121,4 +124,4 @@ alias trans='trans -t fa'
 alias wtt='curl wttr.in/mashhad'
 
 alias ports='netstat -tulnap'
-alias digs='dig +{,no}short'
+alias dg='dig +{,no}short'
