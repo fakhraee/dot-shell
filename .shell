@@ -112,7 +112,7 @@ alias dush='du -csh *|sort -h'
 alias q='exit'
 alias less='less -FX'
 alias axl='axel -a -n 8'
-alias scl='systemctl'
+alias scl='sudo systemctl'
 alias ssh='ssh -o ServerAliveInterval=60'
 
 alias scsv='curl -L http://git.io/unix'
