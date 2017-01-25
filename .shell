@@ -130,3 +130,4 @@ alias wtt='curl wttr.in/mashhad'
 
 alias ports='netstat -tulnap'
 alias dg='dig +{,no}short'
+alias sira='sudo ip r a'
