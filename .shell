@@ -5,9 +5,14 @@ ir() {
 }
 
 # my ip
-myip() { 
-    curl http://icanhazip.com/ && echo "first try" || \
-    nc ifcfg.me 23 | awk 'FNR == 2 {print $4}'
+myip() {
+  iface="${1}"
+  the_curl() {
+    [[ -z "${iface}" ]] && curl http://icanhazip.com/ || \
+    curl --interface "${iface}" http://icanhazip.com/ 
+    }
+  the_curl "${iface}" && echo "first try" || \
+  nc ifcfg.me 23 | awk 'FNR == 2 {print $4}'
 }
 
 # number of connections each IP address has
