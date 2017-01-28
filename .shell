@@ -90,14 +90,16 @@ manperl(){
 
 ## switch to another ppp dev
 sw2dev() {
-    [[ -z "$1" ]] && ip r|grep default && ls /sys/class/net/|grep ppp && return
-    sudo ip r d default && sudo ip r a default dev "$1"
+  ls_them(){
+    ip r | grep default ; ls /sys/devices/virtual/net/ | grep -v lo
+}
+  [[ -z "${1}" ]] && ls_them && return
+  sudo ip r d default && sudo ip r a default dev "${1}"
 }
 
 ## Aliases
 # vcsh
 alias v='vcsh'
-alias lsv='ls -l ~/.config/vcsh/repo.d/'
 
 # ls
 alias l='ls -1S'
