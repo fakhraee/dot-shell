@@ -93,7 +93,8 @@ sw2dev() {
     ip r | grep default ; ls /sys/devices/virtual/net/ | grep -v lo
 }
   [[ -z "${1}" ]] && ls_them && return
-  sudo ip r d default && sudo ip r a default dev "${1}"
+  sudo ip r d default
+  sudo ip r a default dev "${1}"
 }
 
 # list interfaces with ip
