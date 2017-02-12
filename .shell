@@ -153,7 +153,7 @@ alias i3l='i3lock -i ~/.config/i3/bsod.png'
 alias ub='udisksctl mount -b'
 alias cls='$HOME/bin/ls++'
 alias bing='$HOME/bin/bingwallpaper -1'
-alias trans='trans -t fa'
+alias trans='$HOME/bin/trans -t fa'
 alias wtt='curl wttr.in/mashhad'
 
 alias ports='netstat -tulnap'
