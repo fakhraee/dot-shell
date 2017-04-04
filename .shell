@@ -149,7 +149,7 @@ alias scl='sudo systemctl'
 alias ssh='ssh -o ServerAliveInterval=60'
 
 alias scsv='curl -L http://git.io/unix'
-alias i3l='i3lock -i ~/.config/i3/bsod.png'
+alias i3l='i3lock -i ~/.config/i3/bsod.png && echo "Login on: $(date +%a-%m%d-%H%M%S)" >>~/var/login'
 alias ub='udisksctl mount -b'
 alias cls='$HOME/bin/ls++'
 alias bing='$HOME/bin/bingwallpaper -1'
