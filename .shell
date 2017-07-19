@@ -36,7 +36,7 @@ rnmoc () {
 }
 
 lower() { 
-    rename -v 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' *
+    rename -v 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' "${1}"
 }
 
 flower() { 
@@ -121,6 +121,17 @@ pi8() {
   ip=8.8.8.8
   iface="${1}"
   [[ -z "${iface}" ]] && ping -c 2 "${ip}" || ping -c 2 -I "${iface}" "${ip}"
+}
+
+# get file and encode to mp3
+mp3it() {
+  slashnamedot="${1}"
+  namedot="${slashnamedot##*/}"
+  name="${namedot%%.*}"
+  namewav="/tmp/${name}.wav"
+  mplayer -quiet -ao pcm:file="${namewav}" -vo null "${slashnamedot}" && \
+  lame "${namewav}"
+  /bin/rm "${namewav}"
 }
 
 ## Aliases
