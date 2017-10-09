@@ -134,6 +134,16 @@ mp3it() {
   /bin/rm "${namewav}"
 }
 
+# wrapper around virsh and virt-viewer
+virsh() {
+  remote="${1}"
+  hy="${2}"
+  realvirsh="/usr/bin/virsh"
+  [[ "${remote}" = "--remote" ]] && \
+  "${realvirsh}" -c qemu+ssh://root@"${hy}"/system || \
+  "${realvirsh}" "$@"
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
