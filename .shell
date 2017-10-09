@@ -134,7 +134,7 @@ mp3it() {
   /bin/rm "${namewav}"
 }
 
-# wrapper around virsh and virt-viewer
+# wrapper around virsh
 virsh() {
   remote="${1}"
   hy="${2}"
