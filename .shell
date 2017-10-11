@@ -137,10 +137,10 @@ mp3it() {
 # wrapper around virsh
 virsh() {
   remote="${1}"
-  hy="${2}"
+  hv="${2}"
   realvirsh="/usr/bin/virsh"
-  [[ "${remote}" = "--remote" ]] && \
-  "${realvirsh}" -c qemu+ssh://root@"${hy}"/system || \
+  [[ "${remote}" = "--remote" ]] && shift +2 &&  \
+  "${realvirsh}" -c qemu+ssh://root@"${hv}"/system "$@" || \
   "${realvirsh}" "$@"
 }
 
