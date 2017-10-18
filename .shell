@@ -144,6 +144,12 @@ virsh() {
   "${realvirsh}" "$@"
 }
 
+# send git diff to remote server
+gdiffr() {
+  host="${1}"
+  git diff | ssh "${host}" 'cat - >/tmp/.gdiffr'
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
@@ -158,18 +164,11 @@ alias e='vim'
 alias rr='rm -ri'
 #alias rm='rm -i'
 alias rm='trash-put'
-alias pgg='ping google.com'
-alias p4='ping 4.2.2.4'
-alias p8='ping 8.8.8.8'
 alias diff='colordiff'
 alias dush='du -csh *|sort -h'
 alias q='exit'
 alias less='less -FX'
-alias axl='axel -a -n 8'
 alias scl='sudo systemctl'
-alias ssh='ssh -o ServerAliveInterval=60'
-alias sagent='eval $(ssh-agent -s)'
-
 alias scsv='curl -L http://git.io/unix'
 alias i3l='i3lock -i ~/.config/i3/bsod.png && echo "Login on: $(date +%a-%m%d-%H%M%S)" >>~/var/login'
 alias ub='udisksctl mount -b'
@@ -180,7 +179,14 @@ alias wtt='curl wttr.in/mashhad'
 alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle"'
 alias lightup='xbacklight -inc 10'
 alias lightdown='xbacklight -dec 10'
+alias unuker='aptitude purge "?installed(?name(linux-image-[0-9])) ?installed(?not($(uname -r)))"'
 
 alias ports='netstat -tulnap'
 alias dg='dig +{,no}short'
 alias pyweb='python -m SimpleHTTPServer'
+alias axl='axel -a -n 8'
+alias pgg='ping google.com'
+alias p4='ping 4.2.2.4'
+alias p8='ping 8.8.8.8'
+alias ssh='ssh -o ServerAliveInterval=60'
+alias sagent='eval $(ssh-agent -s)'
