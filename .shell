@@ -126,9 +126,10 @@ pi8() {
 # get file and encode to mp3
 mp3it() {
   slashnamedot="${1}"
+  namewav="${2}"
   namedot="${slashnamedot##*/}"
   name="${namedot%%.*}"
-  namewav="/tmp/${name}.wav"
+  [[ -z "${namewav}" ]] && namewav="/tmp/${name}.wav"
   mplayer -quiet -ao pcm:file="${namewav}" -vo null "${slashnamedot}" && \
   lame "${namewav}"
   /bin/rm "${namewav}"
@@ -148,6 +149,13 @@ virsh() {
 gdiffr() {
   host="${1}"
   git diff | ssh "${host}" 'cat - >/tmp/.gdiffr'
+}
+
+# du with sort
+ds() {
+  inpath="${1}"
+  [[ -z "${inpath}" ]] && inpath=.
+  du -sh "${inpath}"/* | sort -h
 }
 
 ## Aliases
