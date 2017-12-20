@@ -187,7 +187,7 @@ alias wtt='curl wttr.in/mashhad'
 alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle"'
 alias lightup='xbacklight -inc 10'
 alias lightdown='xbacklight -dec 10'
-alias unuker='aptitude purge "?installed(?name(linux-image-[0-9])) ?installed(?not($(uname -r)))"'
+alias unuker='sudo aptitude purge "?installed(?name(linux-image-[0-9])) ?installed(?not($(uname -r)))"'
 
 alias ports='netstat -tulnap'
 alias dg='dig +{,no}short'
