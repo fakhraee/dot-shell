@@ -126,6 +126,7 @@ alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle"'
 alias lightup='xbacklight -inc 10'
 alias lightdown='xbacklight -dec 10'
 alias unuker='sudo aptitude purge "?installed(?name(linux-image-[0-9])) ?installed(?not($(uname -r)))"'
+alias mc='. /usr/lib/mc/mc-wrapper.sh'
 
 alias ports='netstat -tulnap'
 alias dg='dig +{,no}short'
