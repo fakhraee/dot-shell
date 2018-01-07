@@ -67,9 +67,9 @@ mp3it() {
   namewav="${2}"
   namedot="${slashnamedot##*/}"
   name="${namedot%%.*}"
-  [[ -z "${namewav}" ]] && namewav="/tmp/${name}.wav"
+  [[ -z "${namewav}" ]] && namewav="/$(pwd)/${name/:/BADHY}.wav"
   mplayer -quiet -ao pcm:file="${namewav}" -vo null "${slashnamedot}" && \
-  lame "${namewav}"
+  lame "${namewav}" "${name}.mp3"
   /bin/rm "${namewav}"
 }
 
