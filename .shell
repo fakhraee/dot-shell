@@ -96,6 +96,14 @@ ds() {
   du -sh "${inpath}"/* | sort -h
 }
 
+# current mpd playing song
+song() {
+  notify-send -u normal \
+              -t 5000 \
+              --hint=int:transient:1 \
+              "Now Playing" "$(mpc current)" 2>&1
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
