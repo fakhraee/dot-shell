@@ -1,3 +1,6 @@
+# my local shell completions
+[[ -x $HOME/bin/__lcomplete ]] && source $HOME/bin/__lcomplete
+
 ## Fucntions
 # find sth in smw
 fin() { 
@@ -104,6 +107,13 @@ song() {
               "Now Playing" "$(mpc current)" 2>&1
 }
 
+# purge unused kernels and headers
+unuker() {
+ kv=$(uname -r|awk -F- '{print $1"-"$2}')
+ sudo aptitude purge \
+ "?installed?or(linux-headers-[0-9],linux-image-[0-9]) ?installed?not(${kv})"
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
@@ -127,12 +137,11 @@ alias i3l='i3lock -i ~/.config/i3/lockimage && echo "Login on: $(date +%a-%m%d-%
 alias ub='udisksctl mount -b'
 alias cls='$HOME/bin/ls++'
 alias bing='$HOME/bin/bingwallpaper -1'
-alias trans='$HOME/bin/trans -t fa'
+alias trj='$HOME/bin/trans -t fa'
 alias wtt='curl wttr.in/mashhad'
 alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle"'
 alias lightup='xbacklight -inc 10'
 alias lightdown='xbacklight -dec 10'
-alias unuker='sudo aptitude purge "?installed(?name(linux-image-[0-9])) ?installed(?not($(uname -r)))"'
 alias m='. /usr/lib/mc/mc-wrapper.sh'
 
 alias ports='netstat -tulnap'
@@ -142,6 +151,7 @@ alias axl='axel -a -n 8'
 alias pgg='ping google.com'
 alias p4='ping 4.2.2.4'
 alias p8='ping 8.8.8.8'
-alias ssh='ssh -o ServerAliveInterval=60'
+alias ssh='TERM=screen ssh -o ServerAliveInterval=60'
 alias sagent='eval $(ssh-agent -s)'
-alias weechat='screen -DRS weechat'
+alias mutt='neomutt -F ~/.config/neomutt/neomuttrc'
+alias vs='v status| grep -B1 M'
