@@ -114,15 +114,20 @@ unuker() {
  "?installed?or(linux-headers-[0-9],linux-image-[0-9]) ?installed?not(${kv})"
 }
 
+scup() {
+  echo '#!/usr/bin/env bash\n#\n#set -x\n' >"${1}"
+  vim "${1}"
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
 
 # ls
-alias l='ls -1S'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
+alias l='ls++ --group-directories-first'
+alias ll='l --potsf'
+alias la='l -a'
+alias lla='ll -a'
 
 alias e='vim'
 alias rr='rm -ri'
@@ -133,7 +138,7 @@ alias q='exit'
 alias less='less -FX'
 alias scl='sudo systemctl'
 alias scsv='curl -L http://git.io/unix'
-alias i3l='i3lock -i ~/.config/i3/lockimage && echo "Login on: $(date +%a-%m%d-%H%M%S)" >>~/var/login'
+alias i3l='i3lock -n -f -c 000000 && echo "Login on: $(date +%a-%m%d-%H%M%S)" >>~/var/login'
 alias ub='udisksctl mount -b'
 alias cls='$HOME/bin/ls++'
 alias bing='$HOME/bin/bingwallpaper -1'
@@ -149,9 +154,15 @@ alias dg='dig +{,no}short'
 alias pyweb='python -m SimpleHTTPServer'
 alias axl='axel -a -n 8'
 alias pgg='ping google.com'
-alias p4='ping 4.2.2.4'
-alias p8='ping 8.8.8.8'
-alias ssh='TERM=screen ssh -o ServerAliveInterval=60'
+alias p9='ping 9.9.9.9'
+alias ssh='TERM=xterm ssh -o ServerAliveInterval=60'
 alias sagent='eval $(ssh-agent -s)'
 alias mutt='neomutt -F ~/.config/neomutt/neomuttrc'
 alias vs='v status| grep -B1 M'
+alias syslog='sudo grc xtail /var/log/syslog'
+
+## variables
+# dl
+dlm="$HOME/var/dl/mov"
+dla="$HOME/var/dl/aud"
+dlv="$HOME/var/dl/vid"
