@@ -122,6 +122,8 @@ scup() {
 ## Aliases
 # vcsh
 alias v='vcsh'
+alias vs='v status| grep -B1 M'
+alias vls='v list'
 
 # ls
 alias l='ls++ --group-directories-first'
@@ -158,7 +160,6 @@ alias p9='ping 9.9.9.9'
 alias ssh='TERM=xterm ssh -o ServerAliveInterval=60'
 alias sagent='eval $(ssh-agent -s)'
 alias mutt='neomutt -F ~/.config/neomutt/neomuttrc'
-alias vs='v status| grep -B1 M'
 alias syslog='sudo grc xtail /var/log/syslog'
 
 ## variables
