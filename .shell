@@ -119,6 +119,26 @@ scup() {
   vim "${1}"
 }
 
+sshL() {
+  remotehost=$1
+  localport=$2
+  remoteport=$3
+  [[ -z ${remoteport} ]] && remoteport="${localport}"
+  sudo ssh -L "${localport}:${remotehost}:${remoteport}" \
+           -F $HOME/.ssh/config \
+           "${using}"
+}
+
+sshR() {
+  localport=$1
+  remoteport=$2
+  [[ -z ${remoteport} ]] && remoteport="0"
+  sudo ssh -R "${remoteport}:localhost:${localport}" \
+           -F $HOME/.ssh/config \
+           "${using}"
+}
+
+
 ## Aliases
 # vcsh
 alias v='vcsh'
