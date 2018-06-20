@@ -124,7 +124,7 @@ sshL() {
   localport=$2
   remoteport=$3
   [[ -z ${remoteport} ]] && remoteport="${localport}"
-  sudo ssh -L "${localport}:${remotehost}:${remoteport}" \
+  sudo ssh -nfL "${localport}:${remotehost}:${remoteport}" \
            -F $HOME/.ssh/config \
            "${using}"
 }
@@ -135,7 +135,8 @@ sshR() {
   [[ -z ${remoteport} ]] && remoteport="0"
   sudo ssh -R "${remoteport}:localhost:${localport}" \
            -F $HOME/.ssh/config \
-           "${using}"
+           "${using}" 2>&1 >/dev/null | \
+       awk '/^Allocated/ {print $3}'
 }
 
 
@@ -166,7 +167,7 @@ alias cls='$HOME/bin/ls++'
 alias bing='$HOME/bin/bing -1'
 alias trj='$HOME/bin/trans -t fa'
 alias wtt='curl wttr.in/mashhad'
-alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle"'
+alias ly='setxkbmap -layout us,ir -option "grp:ctrls_toggle"'
 alias lightup='xbacklight -inc 10'
 alias lightdown='xbacklight -dec 10'
 alias m='. /usr/lib/mc/mc-wrapper.sh'
