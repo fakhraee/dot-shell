@@ -120,6 +120,7 @@ scup() {
 }
 
 sshL() {
+  # 43:whois.arin.net:43
   remotehost=$1
   localport=$2
   remoteport=$3
