@@ -82,7 +82,7 @@ virsh() {
   hv="${2}"
   realvirsh="/usr/bin/virsh"
   [[ "${remote}" = "--remote" ]] && shift +2 &&  \
-  "${realvirsh}" -c qemu+ssh://root@"${hv}"/system "$@" || \
+  "${realvirsh}" -c qemu+ssh://"${hv}"/system "$@" || \
   "${realvirsh}" "$@"
 }
 
