@@ -140,6 +140,17 @@ sshR() {
        awk '/^Allocated/ {print $3}'
 }
 
+setres() {
+  w=${1}
+  h=${2}
+  z=${3}
+  mode=$(cvt ${w} ${h} ${z} | tail -1 | cut -d' ' -f2-)
+  size=${w}x${h}_${z}.00
+  output=$(xrandr | awk '/ connect/ {print $1}')
+  xrandr --newmode ${mode}
+  xrandr --addmode ${output} ${size}
+  xrandr -s ${size}
+}
 
 ## Aliases
 # vcsh
@@ -182,6 +193,7 @@ alias ssh='TERM=xterm ssh -o ServerAliveInterval=60'
 alias sagent='eval $(ssh-agent -s)'
 alias mutt='neomutt -F ~/.config/neomutt/neomuttrc'
 alias syslog='sudo grc xtail /var/log/syslog'
+alias vssh='vim $HOME/.ssh/config' 
 
 ## variables
 # dl
