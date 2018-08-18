@@ -71,7 +71,8 @@ mp3it() {
   namedot="${slashnamedot##*/}"
   name="${namedot%%.*}"
   [[ -z "${namewav}" ]] && namewav="/$(pwd)/${name/:/BADHY}.wav"
-  mplayer -quiet -ao pcm:file="${namewav}" -vo null "${slashnamedot}" && \
+  { mplayer -quiet -ao pcm:file="${namewav}" -vo null "${slashnamedot}" || \
+  mpv --ao=pcm --ao-pcm-file="${namewav}" --no-video "${slashnamedot}"; } &&
   lame "${namewav}" "${name}.mp3"
   /bin/rm "${namewav}"
 }
