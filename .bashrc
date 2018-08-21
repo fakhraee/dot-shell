@@ -1,3 +1,4 @@
+set -x
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -87,5 +88,5 @@ fi
 #hit v in less/more to edit
 export EDITOR=vim
 
-[[ -f $HOME/.bashrc ]] && source "$HOME"/.bashrc
 [[ -f $HOME/.fzf.bash ]] && source ~/.fzf.bash
+[[ -f $HOME/.shell ]] && source "$HOME"/.shell

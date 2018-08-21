@@ -12,10 +12,10 @@
 [[ $- = *i* ]] && source $HOME/opt/liquidprompt/liquidprompt
 
 # some funcs and aliases
-source $HOME/.shell
+[[ -f $HOME/.shell ]] && source $HOME/.shell
 
 # fuzzy search
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
 
 # http://www.bash2zsh.com/essays/essay1_file_manager.html
 alias -s pdf=mupdf
