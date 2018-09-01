@@ -144,7 +144,7 @@ sshR() {
 vssh() {
   [[ -z "${1}" ]] && \
   vim $HOME/.ssh/config || \
-  vim $HOME/.ssh/config.d/"${1}"
+  vim $HOME/mnt/cry/ssh/config.d/"${1}"
 }
 
 setres() {
