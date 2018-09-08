@@ -159,6 +159,10 @@ setres() {
   xrandr -s ${size}
 }
 
+sndl() {
+  mpv --ao=pcm --ao-pcm-file=$2 $1
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
@@ -189,7 +193,6 @@ alias ly='setxkbmap -layout us,ir -option "grp:ctrls_toggle"'
 alias lightup='xbacklight -inc 10'
 alias lightdown='xbacklight -dec 10'
 alias m='. /usr/lib/mc/mc-wrapper.sh'
-
 alias ports='netstat -tulnap'
 alias dg='dig +{,no}short'
 alias pyweb='python -m SimpleHTTPServer'
