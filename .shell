@@ -106,7 +106,7 @@ song() {
   notify-send -u normal \
               -t 5000 \
               --hint=int:transient:1 \
-              "Now Playing" "$(mpc --host="$HOME/var/mpd/socket" current)" 2>&1
+              "Now Playing" "$(mpc --host="$HOME/var/lib/mpd/socket" current)" 2>&1
 }
 
 # purge unused kernels and headers
