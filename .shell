@@ -164,6 +164,10 @@ sndl() {
   mpv --ao=pcm --ao-pcm-file=$2 $1
 }
 
+wgetr() {
+  wget --no-directories --recursive --level=1 --execute robots=off "${1}"
+}
+
 ## Aliases
 # vcsh
 alias v='vcsh'
