@@ -162,6 +162,7 @@ setres() {
 
 sndl() {
   mpv --ao=pcm --ao-pcm-file=$2 $1
+  lame $2 && rm $2
 }
 
 wgetr() {
