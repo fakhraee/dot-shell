@@ -1,0 +1,14 @@
+mod_meta_mode = esc
+encoding = UTF-8
+mod_meta_key = alt
+scrollbar_mode = none
+borderless = true
+bg_color = black
+fg_color = white
+use_transbg = true
+brightness = 15
+contrast = 15
+fontsize = 14
+use_anti_alias = true
+input_method = arabic
+use_urgent_bell = false
