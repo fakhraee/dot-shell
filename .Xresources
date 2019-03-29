@@ -1,0 +1,36 @@
+!$ xrdb ~/.Xresources
+
+URxvt.scrollBar: false
+URxvt.cursorUnderline: true
+URxvt.visualBell: true
+URxvt.transparent: true
+URxvt.shading: 20
+URxvt.tintColor: cyan
+URxvt.background: black
+URxvt.foreground: white
+URxvt.font: xft:SourceCodePro:size=10
+
+! Black
+*color0:  #353535
+*color8:  #555555
+! Red
+*color1:  #D11793
+*color9:  #E480C2
+! Green
+*color2:   #93D117
+*color10: #CCE698
+! Yellow
+*color3:   #ECDC21
+*color11: #FFF78A
+! Blue
+*color4:   #3B92FF
+*color12: #91D5F7
+! Magneta
+*color5:   #9B17D1
+*color13: #D8BBE7
+! Cyan
+*color6:   #1EC7AA
+*color14: #A0FEEE
+! White
+*color7:   #CACACA
+*color15: #FFFFFF
