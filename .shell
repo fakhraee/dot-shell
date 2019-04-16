@@ -210,6 +210,7 @@ alias ssh='ssh -o ServerAliveInterval=60'
 alias sagent='eval $(ssh-agent -s)'
 alias mutt='neomutt -F ~/.config/neomutt/neomuttrc'
 alias syslog='sudo grc xtail /var/log/syslog'
+alias dkr='docker run --rm'
 
 ## variables
 # dl
