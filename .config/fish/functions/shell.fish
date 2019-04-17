@@ -14,29 +14,6 @@ end
 
 
 # ssh
-function sshfw -d ''
-  set -l options 'm/mode=' 'r/remote=' 'l/local='
-  argparse -n sshfw $options -- $argv; or begin echo unknown option; and return; end
-  set -q _flag_mode; and set mode $_flag_mode; or return
-  set -q _flag_remote; and set remote $_flag_remote; or return
-  set -q _flag_local; and set local $_flag_local; or return
-  set remote_host (string split -r -m 1 : $remote | head -1)
-  set remote_port (string split -r -m 1 : $remote | tail -1)
-  set local_host (string split -r -m 1 : $local | head -1)
-  set local_port (string split -r -m 1 : $local | tail -1)
-  if test $mode = "ltr"
-    echo local port forwarding:
-    set cmd ssh -NL $local_port:$local_host:$remote_port \
-                -F $HOME/.ssh/config $remote_host
-  else if test "$mode" = "rtl"
-    echo remote port forwarding:
-    set cmd ssh -NR $remote_port:$_flag_local \
-                -F $HOME/.ssh/config $remote_host
-  else
-    echo valid modes are: ltr or rtl; and return
-  end
-  echo $cmd; and eval ($cmd)
-end
 function ssh
   command ssh -o ServerAliveInterval=60 $argv
 end
@@ -46,6 +23,35 @@ function vssh -d ''
   else
     $EDITOR $HOME/mnt/cry/ssh/config.d/$argv[1]
   end
+end
+function sshfw -d ''
+  set -l options 'm/mode=' 'r/remote=' 'l/local=' 'f/fork'
+  argparse -n sshfw $options -- $argv; or begin echo unknown option; and return; end
+  set -q _flag_mode; and set mode $_flag_mode; or return
+  set -q _flag_remote; and set remote $_flag_remote; or return
+  set -q _flag_local; and set local $_flag_local; or return
+  set remote_host (string split -r -m 1 : $remote | head -1)
+  set remote_port (string split -r -m 1 : $remote | tail -1)
+  set local_host (string split -r -m 1 : $local | head -1)
+  set local_port (string split -r -m 1 : $local | tail -1)
+  if test $mode = "l"
+    set vmode local forwarding:
+    set cmd ssh -NL $local_port:$local_host:$remote_port \
+                -F $HOME/.ssh/config $remote_host
+  else if test "$mode" = "r"
+    set vmode remote forwarding:
+    set cmd ssh -NR $remote_port:$_flag_local \
+                -F $HOME/.ssh/config $remote_host
+  else
+    echo valid modes are: l or r; and return
+  end
+  if set -q _flag_fork
+      set cmd $cmd -fn; and set cmd $cmd
+  else
+    echo $vmode $cmd
+  end
+  eval ($cmd)
+  pgrep -f "ssh.*$remote_host"
 end
 
 
