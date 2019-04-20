@@ -76,6 +76,8 @@ function sndl -d 'download from soundcloud'
   lame $argv[2] && rm $argv[2]
 end
 function mp3it -d 'get file and convert it to mp3'
+  set -l options 'r/remove'
+  argparse -n mp3it $options -- $argv; or begin echo unknown option; and return; end
   set input $argv[1]
   set input_splitted (string split -r -m 1 . $input | head -1)
   set output $argv[2].wav
@@ -83,7 +85,8 @@ function mp3it -d 'get file and convert it to mp3'
   begin
     mpv --ao=pcm --ao-pcm-file=$output --no-video $input; or \
     mplayer -quiet -ao pcm:file=$output -vo null $input
-  end; and lame $output; and /bin/rm $output
+  end; and lame $output; and command rm $output
+  set -q _flag_remove; and command rm $input; and echo $input removed
 end
 function song -d 'current mpd playing song'
   notify-send \
@@ -188,10 +191,10 @@ end
 #
 function virsh -d 'wrapper around virsh'
   set -l options 'r/remote=' 's/session'
+  argparse -n virsh $options -- $argv; or begin echo unknown option; and return; end
   set driver qemu://
   set host ''
   set path system
-  argparse -n virsh $options -- $argv; or begin echo unknown option; and return; end
   set -q _flag_remote; and set host $_flag_remote; and set driver qemu+ssh://
   set -q _flag_session; and set path session
   command virsh -c $driver$host/$path $argv
