@@ -182,8 +182,20 @@ end
 
 
 # docker
+function dkp
+  docker pull $argv
+end
 function dkr
   docker run --rm $argv
+end
+function dks
+  docker stop $argv
+end
+function dkps
+  docker ps -a --format "{{.ID}}; {{.Names}}; {{.Ports}}; {{.Status}}; {{.Image}}. {{.Size}}"
+end
+function dki
+  docker images -a --format "{{.ID}}; {{.Repository}}; {{.Tag}}; {{.Size}}"
 end
 
 
