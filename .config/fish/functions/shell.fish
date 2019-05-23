@@ -149,6 +149,9 @@ end
 function lightdown
   xbacklight -dec 10
 end
+function swapmouse
+  xmodmap -e "pointer = 3 2 1"
+end
 function m
   . /usr/lib/mc/mc-wrapper.sh
 end
