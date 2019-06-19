@@ -68,7 +68,7 @@ function v
   vcsh $argv
 end
 function vs
- v status | grep -B1 M
+ v status | egrep -B1 M
 end
 function vls
   v list
